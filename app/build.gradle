@@ -137,5 +137,13 @@ dependencies {
     implementation 'com.umeng.umsdk:asms:1.2.2'
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
 
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    //Android Jetpack 组件
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.work:work-runtime:2.5.0'
+    implementation "androidx.startup:startup-runtime:1.0.0"
+    implementation "androidx.datastore:datastore-preferences:1.0.0-beta01"
+    implementation "androidx.paging:paging-runtime:3.0.0"
 
 }

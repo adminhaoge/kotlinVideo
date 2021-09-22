@@ -17,6 +17,24 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="Eyepetizer" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+    </style>
+
+    <style name="Eyepetizer.FollowTextView">
+        <item name="android:layout_width">44dp</item>
+        <item name="android:layout_height">22dp</item>
+        <item name="android:background">@drawable/shape_follow_radius_black_2dp_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/plus_follow</item>
+        <item name="android:textSize">10sp</item>
+        <item name="typeface">fzdb1Typeface</item>
+    </style>
+
 
     <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
@@ -70,6 +88,6 @@
 
     </style>
 
-    
 
+    <string name="plus_follow">+关注</string>
 </resources>

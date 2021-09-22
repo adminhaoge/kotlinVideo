@@ -1,9 +1,10 @@
 package com.hazz.kotlinmvp.base
 
 import android.annotation.SuppressLint
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
 
 /**
@@ -13,19 +14,16 @@ import android.support.v4.app.FragmentPagerAdapter
  * 如果需要处理有很多页，并且数据动态性较大、占用内存较多的情况，
  * 应该使用FragmentStatePagerAdapter。
  */
-class BaseFragmentAdapter : FragmentPagerAdapter {
+class BaseFragmentAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
     private var fragmentList: List<Fragment>? = ArrayList()
     private var mTitles: List<String>? = null
 
-    constructor(fm: FragmentManager, fragmentList: List<Fragment>) : super(fm) {
-        this.fragmentList = fragmentList
-    }
-
-    constructor(fm: FragmentManager, fragmentList: List<Fragment>, mTitles: List<String>) : super(fm) {
+    constructor(fa: FragmentActivity,fm: FragmentManager, fragmentList: List<Fragment>, mTitles: List<String>) : this(fa) {
         this.mTitles = mTitles
         setFragments(fm, fragmentList, mTitles)
     }
+
 
     //刷新fragment
     @SuppressLint("CommitTransaction")
@@ -43,16 +41,12 @@ class BaseFragmentAdapter : FragmentPagerAdapter {
         notifyDataSetChanged()
     }
 
-    override fun getPageTitle(position: Int): CharSequence {
-        return if (null != mTitles) mTitles!![position] else ""
-    }
-
-    override fun getItem(position: Int): Fragment {
-        return fragmentList!![position]
-    }
-
-    override fun getCount(): Int {
+    override fun getItemCount(): Int {
         return fragmentList!!.size
+    }
+
+    override fun createFragment(position: Int): Fragment {
+        return fragmentList?.get(position)!!
     }
 
 }

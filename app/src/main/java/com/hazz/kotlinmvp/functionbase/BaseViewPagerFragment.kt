@@ -43,20 +43,9 @@ abstract class BaseViewPagerFragment : BaseFragment() {
 
     abstract val createFragments: Array<Fragment>
 
-    /**
-     * 继承BaseViewPagerFragment中inflate出来的布局。
-     */
-    protected var rootView: View? = null
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
-    }
-
-    fun onCreateView(view: View): View {
-        Log.d(TAG, "BaseViewPagerFragment: onCreateView()")
-        rootView = view
-        return view
     }
 
     open fun setupViews() {

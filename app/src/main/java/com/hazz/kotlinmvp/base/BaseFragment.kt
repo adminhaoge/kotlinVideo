@@ -2,15 +2,18 @@ package com.hazz.kotlinmvp.base
 
 import android.os.Bundle
 import android.support.annotation.LayoutRes
-import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.classic.common.MultipleStatusView
+import com.eyepetizer.android.event.MessageEvent
 import com.hazz.kotlinmvp.MyApplication
 import io.reactivex.annotations.NonNull
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
@@ -35,8 +38,16 @@ import pub.devrel.easypermissions.EasyPermissions
      */
     protected var mLayoutStatusView: MultipleStatusView? = null
 
+    /**
+     * 继承BaseFragment中inflate出来的布局。
+     */
+    protected var rootView: View? = null
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(getLayoutId(),null)
+        val view = inflater.inflate(getLayoutId(), null)
+        rootView = view
+        return view
     }
 
     //懒加载
@@ -89,6 +100,10 @@ import pub.devrel.easypermissions.EasyPermissions
         activity?.let { MyApplication.getRefWatcher(it)?.watch(activity) }
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    open fun onMessageEvent(messageEvent: MessageEvent) {
+    }
 
     /**
      * 重写要申请权限的Activity或者Fragment的onRequestPermissionsResult()方法，
