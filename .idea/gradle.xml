@@ -8,7 +8,6 @@
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="$USER_HOME$/.gradle/wrapper/dists/gradle-5.0-all/4mxuau4c77thx8zlvtz4xiez7/gradle-5.0" />
-        <option name="gradleJvm" value="1.8 (2)" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
