@@ -1,9 +1,10 @@
 package com.hazz.kotlinmvp.ui.fragment
 
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kotlinmvp.R
 import com.hazz.kotlinmvp.base.BaseFragment
 import com.hazz.kotlinmvp.ui.adapter.DetailsAdapter
+import com.hazz.kotlinmvp.ui.adapter.FooterAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class DetailsFragment : BaseFragment() {
@@ -15,6 +16,7 @@ class DetailsFragment : BaseFragment() {
     override fun initView() {
         adapter = DetailsAdapter(this)
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
+        mRecyclerView.adapter = adapter.withLoadStateFooter(FooterAdapter { adapter.retry() })
 
     }
 

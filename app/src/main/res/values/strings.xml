@@ -58,6 +58,7 @@
     <string name="commend">推荐</string>
     <string name="daily">日报</string>
     <string name="currently_not_supported">该功能即将开放，敬请期待</string>
+    <string name="error_view_tip_retry">加载失败，点击重试</string>
 
 
 </resources>

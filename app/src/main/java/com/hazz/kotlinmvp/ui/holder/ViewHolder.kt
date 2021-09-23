@@ -66,6 +66,18 @@ class TextCardViewHeader5ViewHolder(view: View) : RecyclerView.ViewHolder(view) 
     val ivInto5 = view.findViewById<ImageView>(R.id.ivInto5)
 }
 
+class TextCardViewHeader7ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    val tvTitle7 = view.findViewById<TextView>(R.id.tvTitle7)
+    val tvRightText7 = view.findViewById<TextView>(R.id.tvRightText7)
+    val ivInto7 = view.findViewById<ImageView>(R.id.ivInto7)
+}
+
+class TextCardViewHeader8ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    val tvTitle8 = view.findViewById<TextView>(R.id.tvTitle8)
+    val tvRightText8 = view.findViewById<TextView>(R.id.tvRightText8)
+    val ivInto8 = view.findViewById<ImageView>(R.id.ivInto8)
+}
+
 /**
  * RecyclerView帮助类，获取通用ViewHolder或ItemViewType。
  */
@@ -76,6 +88,8 @@ object RecyclerViewHelp {
         TEXT_CARD_FOOTER3 -> TextCardViewFooter3ViewHolder(R.layout.item_text_card_type_footer_three.inflate(parent))
         TEXT_CARD_HEADER4 -> TextCardViewHeader4ViewHolder(R.layout.item_text_card_type_header_four.inflate(parent))
         TEXT_CARD_HEADER5 -> TextCardViewHeader5ViewHolder(R.layout.item_text_card_type_header_five.inflate(parent))
+        TEXT_CARD_HEADER7 -> TextCardViewHeader7ViewHolder(R.layout.item_text_card_type_header_seven.inflate(parent))
+        TEXT_CARD_HEADER8 -> TextCardViewHeader8ViewHolder(R.layout.item_text_card_type_header_eight.inflate(parent))
         else -> EmptyViewHolder(View(parent.context))
     }
 

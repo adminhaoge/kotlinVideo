@@ -15,7 +15,9 @@ android {
             storePassword 'ktmp123456'
         }
     }
+
     compileSdkVersion rootProject.ext.android.compileSdkVersion
+
     defaultConfig {
         applicationId "com.hazz.kotlinmvp"
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -40,6 +42,11 @@ android {
             abiFilters 'armeabi', 'armeabi-v7a', 'x86'
         }
     }
+
+    kotlinOptions{
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
     buildTypes {
         debug {
             minifyEnabled false
@@ -66,10 +73,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
+
     productFlavors {
 
     }
-
 
     dexOptions {
         jumboMode true
@@ -78,15 +85,13 @@ android {
     lintOptions {
         abortOnError false
     }
-
-
 }
 
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    //kotlin 支持库
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1') {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
@@ -104,8 +109,6 @@ dependencies {
     implementation('com.flyco.tablayout:FlycoTabLayout_Lib:2.1.0@aar') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
-    //kotlin 支持库
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //GlideOkHttp
     implementation(rootProject.ext.glideOkhttp) {
         exclude group: 'glide-parent'
@@ -139,6 +142,7 @@ dependencies {
     implementation 'com.umeng.umsdk:asms:1.2.2'
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
 
+    //EventBus
     implementation 'org.greenrobot:eventbus:3.1.1'
 
     //Android Jetpack 组件
@@ -147,5 +151,11 @@ dependencies {
     implementation "androidx.startup:startup-runtime:1.0.0"
     implementation "androidx.datastore:datastore-preferences:1.0.0-beta01"
     implementation "androidx.paging:paging-runtime:3.0.0"
+
+    //Android KTX
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation "androidx.fragment:fragment-ktx:1.3.1"
 
 }
