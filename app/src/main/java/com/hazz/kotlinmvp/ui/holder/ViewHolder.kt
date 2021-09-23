@@ -29,6 +29,7 @@ import com.hazz.kotlinmvp.Constants.ViewHolderType.UGC_SELECTED_CARD_COLLECTION
 import com.hazz.kotlinmvp.Constants.ViewHolderType.UNKNOWN
 import com.hazz.kotlinmvp.Constants.ViewHolderType.VIDEO_SMALL_CARD
 import com.hazz.kotlinmvp.R
+import com.hazz.kotlinmvp.extension.inflate
 import com.hazz.kotlinmvp.mvp.model.bean.*
 
 /**
@@ -71,10 +72,10 @@ class TextCardViewHeader5ViewHolder(view: View) : RecyclerView.ViewHolder(view) 
 object RecyclerViewHelp {
     fun getViewHolder(parent: ViewGroup, viewType: Int) = when (viewType) {
 
-        TEXT_CARD_FOOTER2 -> TextCardViewFooter2ViewHolder(View.inflate(parent.context,R.layout.item_text_card_type_footer_two,parent))
-        TEXT_CARD_FOOTER3 -> TextCardViewFooter3ViewHolder(View.inflate(parent.context,R.layout.item_text_card_type_footer_three,parent))
-        TEXT_CARD_HEADER4 -> TextCardViewHeader4ViewHolder(View.inflate(parent.context,R.layout.item_text_card_type_header_four,parent))
-        TEXT_CARD_HEADER5 -> TextCardViewHeader5ViewHolder(View.inflate(parent.context,R.layout.item_text_card_type_header_five,parent))
+        TEXT_CARD_FOOTER2 -> TextCardViewFooter2ViewHolder(R.layout.item_text_card_type_footer_two.inflate(parent))
+        TEXT_CARD_FOOTER3 -> TextCardViewFooter3ViewHolder(R.layout.item_text_card_type_footer_three.inflate(parent))
+        TEXT_CARD_HEADER4 -> TextCardViewHeader4ViewHolder(R.layout.item_text_card_type_header_four.inflate(parent))
+        TEXT_CARD_HEADER5 -> TextCardViewHeader5ViewHolder(R.layout.item_text_card_type_header_five.inflate(parent))
         else -> EmptyViewHolder(View(parent.context))
     }
 

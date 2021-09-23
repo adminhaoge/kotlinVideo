@@ -43,7 +43,7 @@ class Constants private constructor() {
         val UMENG_EVENT2 = "1002"
     }
 
-    object ViewHolderType{
+    object ViewHolderType {
         const val UNKNOWN = -1
         const val CUSTOM_HEADER = 0
         const val TEXT_CARD_HEADER0 = 1
@@ -54,21 +54,25 @@ class Constants private constructor() {
 
         const val TEXT_CARD_HEADER6 = 6
 
-        const val TEXT_CARD_HEADER7 = 7    //type:textCard -> dataType:TextCardWithRightAndLeftTitle,type:header7
+        const val TEXT_CARD_HEADER7 =
+            7    //type:textCard -> dataType:TextCardWithRightAndLeftTitle,type:header7
 
-        const val TEXT_CARD_HEADER8 = 8    //type:textCard -> dataType:TextCardWithRightAndLeftTitle,type:header8
+        const val TEXT_CARD_HEADER8 =
+            8    //type:textCard -> dataType:TextCardWithRightAndLeftTitle,type:header8
 
         const val TEXT_CARD_FOOTER1 = 9
 
         const val TEXT_CARD_FOOTER2 = 10    //type:textCard -> dataType:TextCard,type:footer2
 
-        const val TEXT_CARD_FOOTER3 = 11    //type:textCard -> dataType:TextCardWithTagId,type:footer3
+        const val TEXT_CARD_FOOTER3 =
+            11    //type:textCard -> dataType:TextCardWithTagId,type:footer3
 
         const val BANNER = 12               //type:banner -> dataType:Banner
 
         const val BANNER3 = 13              //type:banner3-> dataType:Banner
 
-        const val FOLLOW_CARD = 14          //type:followCard -> dataType:FollowCard -> type:video -> dataType:VideoBeanForClient
+        const val FOLLOW_CARD =
+            14          //type:followCard -> dataType:FollowCard -> type:video -> dataType:VideoBeanForClient
 
         const val TAG_BRIEFCARD = 15        //type:briefCard -> dataType:TagBriefCard
 
@@ -82,14 +86,46 @@ class Constants private constructor() {
 
         const val AUTO_PLAY_VIDEO_AD = 20   //type:autoPlayVideoAd -> dataType:AutoPlayVideoAdDetail
 
-        const val HORIZONTAL_SCROLL_CARD = 21    //type:horizontalScrollCard -> dataType:HorizontalScrollCard
+        const val HORIZONTAL_SCROLL_CARD =
+            21    //type:horizontalScrollCard -> dataType:HorizontalScrollCard
 
-        const val SPECIAL_SQUARE_CARD_COLLECTION = 22   //type:specialSquareCardCollection -> dataType:ItemCollection
+        const val SPECIAL_SQUARE_CARD_COLLECTION =
+            22   //type:specialSquareCardCollection -> dataType:ItemCollection
 
-        const val UGC_SELECTED_CARD_COLLECTION = 23   //type:ugcSelectedCardCollection -> dataType:ItemCollection
+        const val UGC_SELECTED_CARD_COLLECTION =
+            23   //type:ugcSelectedCardCollection -> dataType:ItemCollection
 
         const val MAX = 100   //避免外部其他类型与此处包含的某个类型重复。
 
+    }
+
+    object ActionUrl
+    {
+        const val TAG = "eyepetizer://tag/"
+
+        const val DETAIL = "eyepetizer://detail/"
+
+        const val RANKLIST = "eyepetizer://ranklist/"
+
+        const val WEBVIEW = "eyepetizer://webview/?title="
+
+        const val REPLIES_HOT = "eyepetizer://replies/hot?"
+
+        const val TOPIC_DETAIL = "eyepetizer://topic/detail?"
+
+        const val COMMON_TITLE = "eyepetizer://common/?title"
+
+        const val LT_DETAIL = "eyepetizer://lightTopic/detail/"
+
+        const val CM_TOPIC_SQUARE = "eyepetizer://community/topicSquare"
+
+        const val HP_NOTIFI_TAB_ZERO = "eyepetizer://homepage/notification?tabIndex=0"
+
+        const val CM_TAGSQUARE_TAB_ZERO = "eyepetizer://community/tagSquare?tabIndex=0"
+
+        const val CM_TOPIC_SQUARE_TAB_ZERO = "eyepetizer://community/tagSquare?tabIndex=0"
+
+        const val HP_SEL_TAB_TWO_NEWTAB_MINUS_THREE = "eyepetizer://homepage/selected?tabIndex=2&newTabIndex=-3"
     }
 
 }
