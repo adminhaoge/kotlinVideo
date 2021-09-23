@@ -33,7 +33,6 @@ class DetailsFragment : BaseFragment() {
         adapter.addLoadStateListener {
             when (it.refresh) {
                 is LoadState.NotLoading -> {
-                    loadFinished()
 
                 }
             }
