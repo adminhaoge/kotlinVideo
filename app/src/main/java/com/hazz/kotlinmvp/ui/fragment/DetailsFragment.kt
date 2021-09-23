@@ -6,6 +6,7 @@ import com.hazz.kotlinmvp.R
 import com.hazz.kotlinmvp.base.BaseFragment
 import com.hazz.kotlinmvp.ui.adapter.DetailsAdapter
 import com.hazz.kotlinmvp.ui.adapter.FooterAdapter
+import com.scwang.smartrefresh.layout.constant.RefreshState
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class DetailsFragment : BaseFragment() {
@@ -33,9 +34,20 @@ class DetailsFragment : BaseFragment() {
         adapter.addLoadStateListener {
             when (it.refresh) {
                 is LoadState.NotLoading -> {
-
+                    if (it.source.append.endOfPaginationReached) {
+                        mRefreshLayout.isEnableLoadmore = true
+                        mRefreshLayout.finishLoadmore()
+                    } else {
+                        mRefreshLayout.isEnableLoadmore = false
+                    }
+                }
+                is LoadState.Loading -> {
+                    if (mRefreshLayout.state != RefreshState.Refreshing) {
+                    }
                 }
             }
         }
     }
+
+
 }

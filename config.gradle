@@ -17,14 +17,14 @@ ext{
             rxAndroid               : "2.0.1"
     ]
 
-    supportDeps = [
-            //--------  support  -------
-            supportv4               : "com.android.support:support-v4:$dependVersion.androidSupportSdkVersion",
-            appcompatv7             : "com.android.support:appcompat-v7:$dependVersion.androidSupportSdkVersion",
-            cardview                : "com.android.support:cardview-v7:$dependVersion.androidSupportSdkVersion",
-            design                  : "com.android.support:design:$dependVersion.androidSupportSdkVersion",
-            annotations             : "com.android.support:support-annotations:$dependVersion.androidSupportSdkVersion"
-    ]
+//    supportDeps = [
+//            //--------  support  -------
+//            supportv4               : "com.android.support:support-v4:$dependVersion.androidSupportSdkVersion",
+//            appcompatv7             : "com.android.support:appcompat-v7:$dependVersion.androidSupportSdkVersion",
+//            cardview                : "com.android.support:cardview-v7:$dependVersion.androidSupportSdkVersion",
+//            design                  : "com.android.support:design:$dependVersion.androidSupportSdkVersion",
+//            annotations             : "com.android.support:support-annotations:$dependVersion.androidSupportSdkVersion"
+//    ]
 
 
     retrofit = [
@@ -48,7 +48,7 @@ ext{
     glideOkhttp = "com.github.bumptech.glide:okhttp3-integration:$dependVersion.glideSdkVersion"
 
 
-    supportLibs = supportDeps.values()
+//    supportLibs = supportDeps.values()
     networkLibs = retrofit.values()
     rxJavaLibs = rxJava.values()
     otherLibs = [glide]

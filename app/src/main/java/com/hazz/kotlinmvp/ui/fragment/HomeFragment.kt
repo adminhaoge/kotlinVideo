@@ -1,14 +1,14 @@
 package com.hazz.kotlinmvp.ui.fragment
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
-import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.util.Log
+import androidx.core.content.ContextCompat.getColor
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.hazz.kotlinmvp.R
 import com.hazz.kotlinmvp.base.BaseFragment
 import com.hazz.kotlinmvp.mvp.contract.HomeContract
@@ -87,13 +87,15 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         //设置下拉刷新主题颜色
         mRefreshLayout.setPrimaryColorsId(R.color.color_light_black, R.color.color_title_bg)
 
-
-        mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+        mRecyclerView.addOnScrollListener(object : OnScrollListener(){
+            override fun onScrollStateChanged(
+                recyclerView: androidx.recyclerview.widget.RecyclerView,
+                newState: Int
+            ) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     val childCount = mRecyclerView.childCount
-                    val itemCount = mRecyclerView.layoutManager.itemCount
+                    val itemCount = mRecyclerView.layoutManager?.itemCount
                     val firstVisibleItem = (mRecyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
                     if (firstVisibleItem + childCount == itemCount) {
                         if (!loadingMore) {
@@ -104,18 +106,21 @@ class HomeFragment : BaseFragment(), HomeContract.View {
                 }
             }
 
-            //RecyclerView滚动的时候调用
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            override fun onScrolled(
+                recyclerView: androidx.recyclerview.widget.RecyclerView,
+                dx: Int,
+                dy: Int
+            ) {
                 super.onScrolled(recyclerView, dx, dy)
                 val currentVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition()
                 if (currentVisibleItemPosition == 0) {
                     //背景设置为透明
-                    toolbar.setBackgroundColor(getColor(R.color.color_translucent))
+                    toolbar.setBackgroundColor(getColor(requireActivity(),R.color.color_translucent))
                     iv_search.setImageResource(R.mipmap.ic_action_search_white)
                     tv_header_title.text = ""
                 } else {
                     if (mHomeAdapter?.mData!!.size > 1) {
-                        toolbar.setBackgroundColor(getColor(R.color.color_title_bg))
+                        toolbar.setBackgroundColor(getColor(requireActivity(),R.color.color_title_bg))
                         iv_search.setImageResource(R.mipmap.ic_action_search_black)
                         val itemList = mHomeAdapter!!.mData
                         val item = itemList[currentVisibleItemPosition + mHomeAdapter!!.bannerItemSize - 1]
@@ -126,8 +131,6 @@ class HomeFragment : BaseFragment(), HomeContract.View {
                         }
                     }
                 }
-
-
             }
         })
 
