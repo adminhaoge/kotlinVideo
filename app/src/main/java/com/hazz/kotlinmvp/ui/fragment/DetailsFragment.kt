@@ -1,5 +1,6 @@
 package com.hazz.kotlinmvp.ui.fragment
 
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kotlinmvp.R
 import com.hazz.kotlinmvp.base.BaseFragment
@@ -17,10 +18,25 @@ class DetailsFragment : BaseFragment() {
         adapter = DetailsAdapter(this)
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
         mRecyclerView.adapter = adapter.withLoadStateFooter(FooterAdapter { adapter.retry() })
-
+        mRecyclerView.setHasFixedSize(true)
+        mRecyclerView.itemAnimator = null
+        mRefreshLayout.setOnRefreshListener { adapter.refresh() }
+        addLoadStateListener()
     }
 
     override fun lazyLoad() {
         TODO("Not yet implemented")
+    }
+
+
+    private fun addLoadStateListener() {
+        adapter.addLoadStateListener {
+            when (it.refresh) {
+                is LoadState.NotLoading -> {
+                    loadFinished()
+
+                }
+            }
+        }
     }
 }
