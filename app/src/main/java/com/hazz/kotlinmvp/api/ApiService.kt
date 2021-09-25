@@ -18,7 +18,7 @@ interface ApiService{
      * 首页-发现列表
      */
     @GET("api/v7/index/tab/discovery")
-    suspend fun getDetails(): DetailsBean
+    fun getDetailData(): Observable<DetailsBean>
 
     /**
      * 首页精选

@@ -42,7 +42,7 @@ object ActionUrlUtil {
                 "${toastTile},${GlobalUtil.getString(R.string.currently_not_supported)}".showToast()
             }
             decodeUrl.startsWith(Constants.ActionUrl.HP_SEL_TAB_TWO_NEWTAB_MINUS_THREE) -> {
-                EventBus.getDefault().post(SwitchPagesEvent(DailyFragment::class.java))
+//                EventBus.getDefault().post(SwitchPagesEvent(DailyFragment::class.java))
             }
             decodeUrl.startsWith(Constants.ActionUrl.CM_TAGSQUARE_TAB_ZERO) -> {
                 "${toastTile},${GlobalUtil.getString(R.string.currently_not_supported)}".showToast()
@@ -57,14 +57,14 @@ object ActionUrlUtil {
                 "${toastTile},${GlobalUtil.getString(R.string.currently_not_supported)}".showToast()
             }
             decodeUrl.startsWith(Constants.ActionUrl.HP_NOTIFI_TAB_ZERO) -> {
-                EventBus.getDefault().post(SwitchPagesEvent(PushFragment::class.java))
-                EventBus.getDefault().post(RefreshEvent(PushFragment::class.java))
+//                EventBus.getDefault().post(SwitchPagesEvent(PushFragment::class.java))
+//                EventBus.getDefault().post(RefreshEvent(PushFragment::class.java))
             }
             decodeUrl.startsWith(Constants.ActionUrl.TOPIC_DETAIL) -> {
                 "${toastTile},${GlobalUtil.getString(R.string.currently_not_supported)}".showToast()
             }
             decodeUrl.startsWith(Constants.ActionUrl.DETAIL) -> {
-                getConversionVideoId(actionUrl)?.run { NewDetailActivity.start(activity, this) }
+//                getConversionVideoId(actionUrl)?.run { NewDetailActivity.start(activity, this) }
             }
             else -> {
                 "${toastTile},${GlobalUtil.getString(R.string.currently_not_supported)}".showToast()

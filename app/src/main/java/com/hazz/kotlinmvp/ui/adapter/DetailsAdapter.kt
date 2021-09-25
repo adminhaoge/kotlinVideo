@@ -21,18 +21,19 @@ class DetailsAdapter(val fragment: DetailsFragment) : RecyclerView.Adapter<Recyc
 
     private lateinit var details: DetailsBean
 
-    override fun getItemViewType(position: Int): Int = RecyclerViewHelp.getItemViewType(getItem(position)!!)
+    override fun getItemViewType(position: Int): Int = RecyclerViewHelp.getItemViewType(getItem(position))
 
     private fun getItem(position: Int): DetailsBean.Item {
         return details.itemList[position]
     }
 
-    fun obtainDetailsData(details : DetailsBean){
+    fun obtainDetailsData(details : DetailsBean) : DetailsAdapter{
         this.details = details
+        return this
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val item = getItem(position)!!
+        val item = getItem(position)
         when (holder) {
             is TextCardViewHeader5ViewHolder -> {
                 holder.tvTitle5.text = item.data.text

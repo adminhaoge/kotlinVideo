@@ -8,7 +8,7 @@ import android.widget.ImageView
  * 用于给view控件显示隐藏的通用函数方法
  */
 fun View.visible() {
-    this?.visibility = View.VISIBLE
+    this.visibility = View.VISIBLE
 }
 
 fun View.gone() {

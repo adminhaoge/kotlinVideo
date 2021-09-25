@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.hazz.kotlinmvp.mvp.model.bean.VideoRelated
 import com.hazz.kotlinmvp.mvp.model.bean.VideoReplies
 import com.hazz.kotlinmvp.Constants.ViewHolderType.AUTO_PLAY_VIDEO_AD

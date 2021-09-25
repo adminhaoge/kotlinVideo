@@ -216,7 +216,7 @@ abstract class BaseActivity : AppCompatActivity(),EasyPermissions.PermissionCall
 
     protected fun setKeyboardListener(listener : KeyboardListener) {
         val contentView = getContentView()
-        val rootView = contentView?.getChildAt(0)
+        val rootView = contentView.getChildAt(0)
 
         setKeyboardListener(rootView, listener)
     }
