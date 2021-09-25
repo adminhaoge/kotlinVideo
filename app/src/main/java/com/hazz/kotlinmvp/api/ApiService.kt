@@ -1,9 +1,6 @@
 package com.hazz.kotlinmvp.api
 
-import com.hazz.kotlinmvp.mvp.model.bean.AuthorInfoBean
-import com.hazz.kotlinmvp.mvp.model.bean.CategoryBean
-import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
-import com.hazz.kotlinmvp.mvp.model.bean.TabInfoBean
+import com.hazz.kotlinmvp.mvp.model.bean.*
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -15,6 +12,13 @@ import retrofit2.http.Url
  */
 
 interface ApiService{
+
+
+    /**
+     * 首页-发现列表
+     */
+    @GET("api/v7/index/tab/discovery")
+    suspend fun getDetails(): DetailsBean
 
     /**
      * 首页精选

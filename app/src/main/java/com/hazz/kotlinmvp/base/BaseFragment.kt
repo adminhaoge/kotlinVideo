@@ -2,12 +2,12 @@ package com.hazz.kotlinmvp.base
 
 import android.os.Bundle
 import android.support.annotation.LayoutRes
+import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import com.classic.common.MultipleStatusView
 import com.eyepetizer.android.event.MessageEvent
 import com.hazz.kotlinmvp.MyApplication

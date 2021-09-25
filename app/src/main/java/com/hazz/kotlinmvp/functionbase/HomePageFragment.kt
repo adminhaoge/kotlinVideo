@@ -1,10 +1,10 @@
 package com.hazz.kotlinmvp.functionbase
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.eyepetizer.android.event.MessageEvent
 import com.eyepetizer.android.event.RefreshEvent
 import com.eyepetizer.android.event.SwitchPagesEvent
@@ -46,16 +46,16 @@ class HomePageFragment : BaseViewPagerFragment() {
         if (messageEvent is RefreshEvent && this::class.java == messageEvent.activityClass) {
             when (viewPager?.currentItem) {
                 0 -> EventBus.getDefault().post(RefreshEvent(DiscoveryFragment::class.java))
-                1 -> EventBus.getDefault().post(RefreshEvent(CommendFragment::class.java))
-                2 -> EventBus.getDefault().post(RefreshEvent(DailyFragment::class.java))
+//                1 -> EventBus.getDefault().post(RefreshEvent(CommendFragment::class.java))
+//                2 -> EventBus.getDefault().post(RefreshEvent(DailyFragment::class.java))
                 else -> {
                 }
             }
         }else if (messageEvent is SwitchPagesEvent) {
             when (messageEvent.activityClass) {
                 DiscoveryFragment::class.java -> viewPager?.currentItem = 0
-                CommendFragment::class.java -> viewPager?.currentItem = 1
-                DailyFragment::class.java -> viewPager?.currentItem = 2
+//                CommendFragment::class.java -> viewPager?.currentItem = 1
+//                DailyFragment::class.java -> viewPager?.currentItem = 2
                 else -> {
                 }
             }
@@ -67,10 +67,10 @@ class HomePageFragment : BaseViewPagerFragment() {
     }
 
     override fun initView() {
-        TODO("Not yet implemented")
+
     }
 
     override fun lazyLoad() {
-        TODO("Not yet implemented")
+
     }
 }

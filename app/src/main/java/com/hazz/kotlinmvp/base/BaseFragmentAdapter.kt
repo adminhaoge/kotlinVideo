@@ -1,10 +1,10 @@
 package com.hazz.kotlinmvp.base
 
 import android.annotation.SuppressLint
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentStatePagerAdapter
 
 
 /**
@@ -14,12 +14,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
  * 如果需要处理有很多页，并且数据动态性较大、占用内存较多的情况，
  * 应该使用FragmentStatePagerAdapter。
  */
-class BaseFragmentAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+class BaseFragmentAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm) {
 
     private var fragmentList: List<Fragment>? = ArrayList()
     private var mTitles: List<String>? = null
 
-    constructor(fa: FragmentActivity,fm: FragmentManager, fragmentList: List<Fragment>, mTitles: List<String>) : this(fa) {
+    constructor(fm: FragmentManager, fragmentList: List<Fragment>, mTitles: List<String>) : this(fm) {
         this.mTitles = mTitles
         setFragments(fm, fragmentList, mTitles)
     }
@@ -41,11 +41,11 @@ class BaseFragmentAdapter(fragmentActivity: FragmentActivity) : FragmentStateAda
         notifyDataSetChanged()
     }
 
-    override fun getItemCount(): Int {
+    override fun getCount(): Int {
         return fragmentList!!.size
     }
 
-    override fun createFragment(position: Int): Fragment {
+    override fun getItem(position: Int): Fragment {
         return fragmentList?.get(position)!!
     }
 

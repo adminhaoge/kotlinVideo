@@ -1,13 +1,11 @@
 package com.hazz.kotlinmvp.ui.adapter
 
 import android.os.Bundle
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
 import com.hazz.kotlinmvp.R
 import com.hazz.kotlinmvp.extension.gone
 import com.hazz.kotlinmvp.extension.setOnClickListener
@@ -19,9 +17,19 @@ import com.hazz.kotlinmvp.ui.holder.*
 import com.hazz.kotlinmvp.utils.ActionUrlUtil
 import com.hazz.kotlinmvp.utils.GlobalUtil
 
-class DetailsAdapter(val fragment: DetailsFragment) : PagingDataAdapter<DetailsBean.Item, RecyclerView.ViewHolder>(DIFF_CALLBACK){
+class DetailsAdapter(val fragment: DetailsFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+
+    private lateinit var details: DetailsBean
 
     override fun getItemViewType(position: Int): Int = RecyclerViewHelp.getItemViewType(getItem(position)!!)
+
+    private fun getItem(position: Int): DetailsBean.Item {
+        return details.itemList[position]
+    }
+
+    fun obtainDetailsData(details : DetailsBean){
+        this.details = details
+    }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)!!
@@ -65,27 +73,8 @@ class DetailsAdapter(val fragment: DetailsFragment) : PagingDataAdapter<DetailsB
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = RecyclerViewHelp.getViewHolder(parent, viewType)
 
-
-
-
-    companion object {
-        const val TAG = "DetailsAdapter"
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DetailsBean.Item>() {
-            override fun areItemsTheSame(
-                oldItem: DetailsBean.Item,
-                newItem: DetailsBean.Item
-            ): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(
-                oldItem: DetailsBean.Item,
-                newItem: DetailsBean.Item
-            ): Boolean {
-                return oldItem == newItem
-            }
-
-        }
+    override fun getItemCount(): Int {
+        return if (details.count > 0) details.count else 0
     }
 
 }

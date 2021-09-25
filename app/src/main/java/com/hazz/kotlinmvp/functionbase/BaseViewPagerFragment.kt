@@ -1,15 +1,15 @@
 package com.hazz.kotlinmvp.functionbase
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.view.ViewPager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.flyco.tablayout.CommonTabLayout
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
@@ -29,13 +29,11 @@ abstract class BaseViewPagerFragment : BaseFragment() {
 
     protected var ivSearch: ImageView? = null
 
-    protected var viewPager: ViewPager2? = null
+    protected var viewPager: ViewPager? = null
 
     protected var tabLayout: CommonTabLayout? = null
 
-    protected var pageChangeCallback: PageChangeCallback? = null
-
-    protected val adapter: VpAdapter by lazy { VpAdapter(requireActivity()).apply { addFragments(createFragments) } }
+    protected val adapter: VpAdapter by lazy { VpAdapter(requireActivity().supportFragmentManager).apply { addFragments(createFragments) } }
 
     protected var offscreenPageLimit = 1
 
@@ -67,12 +65,10 @@ abstract class BaseViewPagerFragment : BaseFragment() {
             }
 
             override fun onTabReselect(position: Int) {
-                TODO("Not yet implemented")
+
             }
 
         })
-        pageChangeCallback = PageChangeCallback()
-        viewPager?.registerOnPageChangeCallback(pageChangeCallback!!)
     }
 
     override fun onDestroyView() {
@@ -82,20 +78,9 @@ abstract class BaseViewPagerFragment : BaseFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        pageChangeCallback?.run { viewPager?.unregisterOnPageChangeCallback(this) }
-        pageChangeCallback = null
     }
 
-
-
-    inner class PageChangeCallback : ViewPager2.OnPageChangeCallback() {
-        override fun onPageSelected(position: Int) {
-            super.onPageSelected(position)
-            tabLayout?.currentTab = position
-        }
-    }
-
-    inner class VpAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+    inner class VpAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm) {
 
         private val fragments = mutableListOf<Fragment>()
 
@@ -103,11 +88,11 @@ abstract class BaseViewPagerFragment : BaseFragment() {
             fragments.addAll(fragment)
         }
 
-        override fun getItemCount(): Int {
+        override fun getCount(): Int {
             return fragments.size
         }
 
-        override fun createFragment(position: Int): Fragment {
+        override fun getItem(position: Int): Fragment {
             return fragments[position]
         }
 

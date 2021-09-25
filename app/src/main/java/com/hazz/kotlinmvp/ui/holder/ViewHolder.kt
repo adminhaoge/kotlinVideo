@@ -2,13 +2,14 @@
 
 package com.hazz.kotlinmvp.ui.holder
 
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.eyepetizer.android.logic.model.VideoRelated
-import com.eyepetizer.android.logic.model.VideoReplies
+import com.hazz.kotlinmvp.mvp.model.bean.VideoRelated
+import com.hazz.kotlinmvp.mvp.model.bean.VideoReplies
 import com.hazz.kotlinmvp.Constants.ViewHolderType.AUTO_PLAY_VIDEO_AD
 import com.hazz.kotlinmvp.Constants.ViewHolderType.BANNER
 import com.hazz.kotlinmvp.Constants.ViewHolderType.BANNER3

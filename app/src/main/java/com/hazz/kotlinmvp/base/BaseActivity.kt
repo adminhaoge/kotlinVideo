@@ -8,6 +8,7 @@ import android.graphics.Point
 import android.graphics.Rect
 import android.os.Bundle
 import android.support.annotation.ColorRes
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,6 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.classic.common.MultipleStatusView
 import com.gyf.immersionbar.ImmersionBar
 import com.hazz.kotlinmvp.MyApplication
